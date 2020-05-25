@@ -1,0 +1,1057 @@
+//樣式顏色定義
+$main-color: #fff300
+$second-color: #eaeaea
+$font-color: #000
+$font-color02: #9c9c9c
+$font-colorGray: #6b6b6b
+$font-size-main: 20px
+$font-size-small: 12px
+$font-size-txt: 14px
+$container-lage: 1300px
+$container-mid: 970px
+$container-small: 750px
+
+
+*
+  font-family: "微軟正黑體"
+  // touch-action: none
+
+@mixin breakpoint($point)
+  @if $point == pc
+    @media only screen and (max-width: 1300px)
+      @content
+  @else if $point == pad
+    @media only screen and (max-width: 768px)
+      @content
+  @else if $point == mobile
+    @media only screen and (max-width: 480px)
+      @content
+  @else if $point == mobile-small
+    @media only screen and (max-width: 320px)
+      @content
+
+@mixin block_center
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+
+@mixin size($w,$h)
+  width: $w
+  height: $h
+
+@mixin pagesize
+  width: 100vw
+  height: 100vh
+
+@mixin titleStyle
+  font-size: $font-size-main
+  font-weight: 600
+  color: $font-color
+
+@mixin titleStyle02
+  font-size: $font-size-small
+  font-weight: 700
+  color: $font-color02
+
+@mixin textstyle
+  color: $font-colorGray
+  font-weight: 700
+  letter-spacing: 1
+
+@mixin cursor
+  cursor: pointer
+  text-decoration: none
+  user-select: none
+
+::-webkit-scrollbar
+  width: 10px
+::-webkit-scrollbar-track
+  background-color: #fff
+::-webkit-scrollbar-thumb
+  background-color: $second-color
+::-webkit-scrollbar-thumb:hover
+  background: #f5f5f5
+
+html, body
+  +size(100%,100vh) 
+  padding: 0
+  margin: 0
+  
+body
+  overflow-x: hidden
+html
+  +breakpoint(pad)
+    overflow: hidden
+
+
+.container
+  width: $container-lage
+  margin: 0 auto
+  position: relative
+  padding: 0 15px
+  box-sizing: border-box
+
+  +breakpoint(pc)
+    width: $container-mid
+  +breakpoint(pad)
+    width: 100%
+
+header
+  position: fixed
+  width: 100%
+  z-index: 2
+
+.index,.about
+  +pagesize
+  display: table
+.about, .skill 
+  +breakpoint(pad)
+    +size(100%,auto)  
+    margin: 0 auto 50px
+.index
+  display: flex
+
+.skill 
+  display: table
+  margin: 50px auto
+
+.navbar
+  ul
+    list-style: none
+    display: inline-flex
+    flex-direction: row
+    justify-content: flex-end
+    margin: 0
+    padding: 0
+    font-size: $font-size-txt
+    +size(100%,60px)
+    li
+      line-height: 60px
+      margin-right: 20px
+      &:hover
+        a
+          +textstyle
+
+    a
+      font-size: $font-size-small
+      +textstyle
+      color: $font-color
+      +cursor
+
+.intro
+  display: flex
+  justify-content: center
+  align-items: center
+  +size(100%,100%)
+  .intro-txt
+    width: 80%
+    display: block
+    margin: auto
+    +breakpoint(mobile)
+      width: 100%
+
+  .path
+    fill: none
+    stroke: #000
+    stroke-miterlimit: 10
+    stroke-width: 3px
+    stroke-dasharray: 1000
+    stroke-dashoffset: 0
+    animation: dash 8s linear alternate infinite
+    animation-iteration-count: 1
+
+  .pattern
+    fill: $main-color
+
+
+@keyframes dash
+  from
+    stroke-dashoffset: 1000
+  to
+    stroke-dashoffset: 0
+
+.name-area
+  position: absolute
+  right: 0
+  bottom: 40px
+  width: 110px
+  +breakpoint(pad)
+    right: 15px
+
+  .name
+    position: relative
+    font-weight: 800
+    &::before
+      content: ""
+      position: absolute
+      left: -16px
+      top: 0px
+      background-color: $main-color
+      +size(9px,19px)
+
+  .year
+    font-size: 13px
+
+    .right
+      float: right
+      position: relative
+      &::before
+        content: ""
+        position: absolute
+        background-color: #000
+        +size(35px,1px)
+        right: 37px
+        top: 8px
+.contact
+  position: relative
+  z-index: -1
+
+  .c-style
+  margin: 120px auto 0
+  display: table
+  +breakpoint(mobile)
+    margin: 20px auto 0
+
+.animation
+  .square
+    +size(580px,580px)
+    background-color: $main-color
+    position: absolute
+    top: -10%
+    left: -50%
+    z-index: -1
+    transform: rotate(45deg)
+    animation: rotateMove 30s infinite linear
+
+    @keyframes rotateMove
+      from
+        transform: rotate(0deg)
+      to
+        transform: rotate(360deg)
+
+  .circle-line, .circle-line03, .circle-line04
+    +size(900px,900px)
+    border: 1px solid $second-color
+    position: absolute
+    border-radius: 50%
+    left: -65%
+    top: -25%
+    z-index: -1
+  .circle-line03
+    animation: rotateMove 20s infinite linear
+    .circle-small
+      +size(35px,35px)
+      background-color: $main-color
+      position: absolute
+      right: 28%
+      top: 2%
+      border-radius: 50%
+  .circle-line04
+    .circle-small02
+      +size(10px,10px)
+      background-color:  $main-color
+      position: absolute
+      right: 28%
+      top: 3%
+      border-radius: 50%
+      animation: shining 3s infinite linear
+      @keyframes shining
+        0%
+          transform: scale(1)
+        25%
+          transform: scale(1.3)
+        50%
+          transform: scale(1.6)
+        75%
+          transform: scale(1.3)
+        100%
+          transform: scale(1)
+
+  .circle-line02
+    +size(870px,870px)
+    border: 1px dashed $second-color
+    position: absolute
+    border-radius: 50%
+    left: -66%
+    top: -22%
+    z-index: -1
+.work
+  position: relative
+  z-index: 1
+  .work-region
+    display: none 
+    animation-delay: 3s
+    &.active
+      display: block
+    +breakpoint(pad)
+      display: block
+
+
+.mm-region
+  position: relative
+  transition: 0.5s
+  &:hover
+    &::before
+      -webkit-transform: translateY(-5px) translateX(-5px)
+      transform: translateY(-5px) translateX(-5px)
+    .name-info
+      margin-top: -10px
+  &::before
+    content: ""
+    position: absolute
+    +size(300px,220px)
+    border: 3px solid $main-color
+    margin-top: 0px
+    margin-left: 12px
+    transition: 0.5s
+
+.left-region
+  width: 39%
+  float: left
+  +breakpoint(mobile)
+    width: 100%
+  .photo-cover
+    +size(300px,250px)
+    display: flex
+    align-items: center
+    justify-content: center
+    +breakpoint(mobile)
+      margin: 0 auto
+    overflow: hidden
+    img 
+      width: 100%
+  .name-info
+    +size(300px,150px)
+    transition: 0.5s
+
+
+    .myname
+      h3
+        margin: 30px 0 0 0
+      span
+        +titleStyle02
+      .info
+        font-size: 14px
+        margin: 10px 0 0 0
+        letter-spacing: 1px
+        line-height: 24px
+.right-region
+  width: 55%
+  float: right
+  +breakpoint(mobile)
+    width: 100%
+    margin-top: 30px
+    .region02
+      position: absolute
+      top: 5px
+      right: 0
+
+
+// 標題樣式
+.title-region
+  width: 100px
+
+  .en-title
+    +titleStyle02
+    letter-spacing: 2px
+  .main-title
+    +titleStyle
+    position: relative
+    &::after
+      content: ""
+      position: absolute
+      bottom: 4px
+      right: -29px
+      background: $main-color
+      +size(22px,9px)
+
+// 清單樣式-無動作
+.region
+  display: none
+  animation-delay: 0.4s
+  &.active
+    display: block
+  +breakpoint(pad)
+    display: block
+.list-style
+  ul
+    list-style: none
+    .list-item
+      height: 50px
+      font-size: $font-size-txt
+      position: relative
+      
+      &:nth-child(1)
+        animation-delay: 0.5s
+      &:nth-child(2)
+        animation-delay: 0.6s
+      &:nth-child(3)
+        animation-delay: 0.7s
+      &:nth-child(4)
+        animation-delay: 0.8s
+      &:nth-child(5)
+        animation-delay: 0.9s
+      &:nth-child(6)
+        animation-delay: 1s
+
+      &::before
+        content: ""
+        position: absolute
+        left: -20px
+        top: 6px
+        border-radius: 50%
+        border: 1px solid $font-color
+        background-color: #fff
+        +size(8px,8px)
+      &:first-child:before
+        background-color: $font-color
+
+      &::after
+        content: ""
+        position: absolute
+        left: -16px
+        top: 15px
+        background-color: $font-color
+        +size(1px,50px)
+      &:last-child:after
+        +size(0px,0px)
+
+      span
+        margin-right: 20px
+
+.tab-list
+  overflow: hidden
+  margin: 50px 0
+
+  #tab
+    ul
+      float: left
+      a
+        color: $font-color
+        font-size: 13px
+        transition: 0.5s
+        +cursor
+
+// 清單樣式
+.tab-labels
+  ul
+    +breakpoint(mobile)
+      width: 100%
+    li
+      height: 50px
+      font-size: $font-size-txt
+      position: relative
+      +breakpoint(mobile)
+        width: 50%
+        float: left
+      &::after
+        content: ""
+        position: absolute
+        left: -16px
+        top: 15px
+        background-color: $font-color
+        +size(1px,50px)
+        +breakpoint(mobile)
+          +size(100%,1px)
+          left: 34px
+          top: 30px
+        +breakpoint(mobile-small)
+          width: 82px
+      &:last-child:after
+        +size(0px,0px)
+    label
+      position: relative
+      &::before
+        content: ""
+        position: absolute
+        left: -20px
+        top: 6px
+        border-radius: 50%
+        border: 1px solid $font-color
+        background-color: #fff
+        +size(8px,8px)
+        +breakpoint(mobile)
+          left: 42%
+          top: 25px
+      span
+        margin-right: 20px
+
+.tab-list
+  overflow: hidden
+  margin: 50px 0
+
+  #tab
+    ul
+      float: left
+      a
+        +cursor
+        color: $font-color
+        font-size: 13px
+        transition: 0.5s
+
+
+
+input[type="radio"]
+  display: none
+
+
+label
+  cursor: pointer
+
+#toggle-tab1:checked ~ .tab-labels label[for="toggle-tab1"],
+#toggle-tab2:checked ~ .tab-labels label[for="toggle-tab2"],
+#toggle-tab3:checked ~ .tab-labels label[for="toggle-tab3"]
+  font-weight: 600
+  transition: 0.5s
+
+#toggle-tab1:checked ~ .tab-labels label[for="toggle-tab1"]::before,
+#toggle-tab2:checked ~ .tab-labels label[for="toggle-tab2"]::before,
+#toggle-tab3:checked ~ .tab-labels label[for="toggle-tab3"]::before
+  background-color: $font-color
+
+
+#toggle-tab1:checked ~ .tab-contents #tab1,
+#toggle-tab2:checked ~ .tab-contents #tab2,
+#toggle-tab3:checked ~ .tab-contents #tab3
+  display: block
+
+.tab-contents
+  overflow: hidden
+  +breakpoint(mobile)
+    width: 100%
+  .tab-content
+    display: none
+    padding: 12px
+    float: left
+    margin-left: 50px
+    +breakpoint(pad)
+      margin-left: 10px
+    +breakpoint(mobile)
+      margin-left: 0px
+      padding: 0px
+
+.fadeIn
+  animation: fadeIn 0.5s
+.fadeInUp
+  animation: fadeInUp 0.8s
+  animation-duration: 1s
+  animation-fill-mode: both
+.zoomIn
+  animation: zoomIn 0.8s
+  animation-duration: 1s
+  animation-fill-mode: both
+.active
+  display: block
+
+
+.block:nth-child(1)
+  animation-delay: 1.2s
+.block:nth-child(2)
+  animation-delay: 1.5s
+.block:nth-child(3)
+  animation-delay: 1.7s
+
+
+
+
+@keyframes zoomIn
+  0%
+    opacity: 0
+    -webkit-transform: scale3d(.3,.3,.3)
+    transform: scale3d(.3,.3,.3)
+  50%
+    opacity: 1
+
+
+@keyframes fadeIn
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@keyframes fadeInUp
+  from
+    opacity: 0
+    transform: translate(0,100%)
+
+  to 
+    opacity: 1
+    transform: none
+
+@keyframes buttonAnimate
+  0%
+    opacity: 0
+  50%
+    opacity: 0.5
+  100%
+    opacity: 0
+
+//card style
+.card
+  +size(calc(100%/2 - 15px),250px)
+  background-color: #fff
+  position: relative
+  overflow: hidden
+  cursor: pointer
+  float: left
+  margin: 0 0 15px 15px
+  box-shadow: 2px 2px 18px #ebebeb
+  +breakpoint(pc)
+    +size(calc(100%/2 - 15px),170px)
+  +breakpoint(pad)
+    height: 145px
+  +breakpoint(mobile)
+    width: 100%
+    margin: 15px 0
+
+  &.expanded
+    .dialog
+      display: block
+      -webkit-animation: fadeIn 0.2s forwards
+      animation: fadeIn 0.5s forwards
+      animation-delay: 0.2s
+      box-sizing: border-box
+      +breakpoint(mobile)
+        padding: 15px
+
+  &:hover
+    .pic
+      filter: grayscale(0)
+    button
+      transform: scale(50)
+      background-color: #fff300
+      animation: buttonAnimate .8s forwards
+    p
+      color: $font-colorGray
+
+  .wrapper
+    &::before
+      content: ""
+      position: absolute
+      left: 10px
+      top: -11px
+      +size(16px,16px)
+      background-color: #fff
+      border-radius: 50%
+      z-index: 3
+
+    &::after
+      content: ""
+      position: absolute
+      left: 10px
+      bottom: -11px
+      +size(16px,16px)
+      background-color: #fff
+      border-radius: 50%
+      z-index: 3
+
+  .pic
+    +size(calc(100% - 50px), 100%)
+    filter: grayscale(100%)
+    transition: all 2s
+    +breakpoint(pc)
+      +size(330px,170px)
+    +breakpoint(pad)
+      width: 230px
+    +breakpoint(mobile)
+        width: 90%
+
+    img
+      width: 100%
+
+    .title
+      position: absolute
+      bottom: 0
+      right: 0
+      font-weight: 800
+      font-size: $font-size-main
+      padding: 7px 8px
+      color: #fff
+      text-shadow: 2px 2px 12px #444
+
+  .dotted
+    border-left: 5px dotted #fff
+    position: absolute
+    top: 0
+    left: 15px
+    height: 100%
+
+  button
+    +size(22px,22px)
+    background-color: $main-color
+    position: absolute
+    right: 0
+    bottom: 0
+    border-radius: 50%
+    border: 0
+    margin: 11px
+    transition: 0.5s
+    animation: none
+    +breakpoint(pad)
+      +size(18px,18px)
+  p
+    position: absolute
+    right: 3px
+    top: 8px
+    writing-mode: vertical-lr
+    color: $font-color02
+    font-size: $font-size-small
+    letter-spacing: 1px
+    white-space: nowrap
+    +breakpoint(pad)
+      letter-spacing: 1
+      right: 0
+
+  .toggle
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 2
+
+  .dialog
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 999
+    width: 100%
+    height: 100%
+    padding: 40px
+    display: none
+    opacity: 0
+    .cover
+      position: absolute
+      top: 0
+      left: 0
+      background-color: rgba(#24252a, 0.8)
+      width: 100%
+      height: 100%
+      z-index: 999
+
+    .closeBtn
+      position: absolute
+      z-index: 1001
+      right: 70px
+      top: 48px
+      padding: 5px
+      font-size: $font-size-main
+      color: $font-colorGray
+      font-weight: 800
+      +cursor
+
+
+    .card-content
+      position: relative
+      background: #f5f5f5
+      width: 100%
+      height: 100%
+      z-index: 1000
+      overflow-y: scroll
+      padding: 50px 0
+      box-sizing: border-box
+      text-align: center
+      a
+        +cursor
+        +textstyle
+        font-size: $font-size-small
+        padding-bottom: 30px
+        display: block
+
+      h2
+        position: relative
+        &::before
+          content: ""
+          position: absolute
+          top: 57px
+          left: calc(50% - 21px)
+          +size(42px,1px)
+          background-color: #000
+
+      span
+        font-size: $font-size-small
+        line-height: 30px
+        display: block
+      span:last-of-type
+          padding-bottom: 25px
+          color: $font-color
+          opacity: 0.5
+
+      .name
+        padding: 30px 0
+        font-weight: 800
+
+      .img-cover
+        justify-content: center
+        align-items: flex-start
+        padding: 0 25px
+        box-sizing: border-box
+        width: 800px
+        margin: 0 auto
+        +breakpoint(mobile)
+          width: 100%
+          padding: 0px
+        img
+          width: 100%
+
+
+.block-style
+  line-height: 22px
+  padding: 50px 0 0 0
+  &:nth-child(2)
+    animation-delay: 1s
+  &:nth-child(3)
+    animation-delay: 1.2s
+  &:nth-child(4)
+    animation-delay: 1.5s
+  .main-title
+    font-size: 16px
+    font-weight: 600
+    position: relative
+
+    &::before
+      content: ""
+      position: absolute
+      bottom: 0
+      left: 49px
+      +size(150px,8px)
+      background-color: $main-color
+      z-index: -1
+  span
+    font-size: $font-size-small
+    letter-spacing: 1px
+    white-space: nowrap
+    +breakpoint(mobile)
+      white-space: normal
+
+.col-style
+  margin: 0 auto
+  text-align: center
+  .block
+    display: inline-block
+    width: 150px
+    +breakpoint(mobile)
+      width: 100%
+      morgin-bottom: 20px
+  .wrapper
+    +size(60px,60px)
+    border-radius: 50%
+    background: $main-color
+    margin: 0 auto
+    text-align: center
+    line-height: 72px
+    // animation: fadeIn 1s forwards
+    // animation-delay: 0.5s
+  .svgicon
+    +size(26px,26px)
+  .icon
+    fill: none
+    stroke: #000
+    stroke-miterlimit: 10
+    stroke-width: 0.95px
+  .txt
+    font-size: $font-size-txt
+    padding: 10px 0
+    color: #7b7676
+    a
+      text-decoration: none
+      color: #7b7676
+.end-info
+  text-align: center
+  width: 100%
+  padding: 8px
+  display: block
+  color: $second-color
+  background-color: $font-color
+  font-size: $font-size-small
+  margin-top: 70px
+
+
+
+
+//立方體動畫
+@keyframes move
+  0%
+    transform: rotateX(-10deg) rotateY(0deg) translateZ(var(--center, 50px))
+  100%
+    transform: rotateX(-10deg) rotateY(360deg) translateZ(var(--center, 50px))
+
+.camera
+  width: 200px
+  height: 200px
+  perspective-origin: center center
+  perspective: 500px
+  float: right
+
+  .space
+    position: relative
+    width: 100px
+    height: 100px
+    left: 100px
+    top: 100px
+    transform-style: preserve-3d
+    transform-origin: center top
+    animation: move 25s linear infinite
+
+    .cube
+      position: absolute
+      width: 100px
+      height: 100px
+
+    .cube:nth-child(1)
+      border: 1px solid $font-color
+      transform: translateX(-102px) translateY(0px) rotateY(270deg)
+      transform-origin: right top
+
+    .cube:nth-child(2)
+      border: 1px solid $font-color
+      transform: translateX(0px) translateY(0px)
+
+    .cube:nth-child(3)
+      border: 1px solid $font-color
+      transform: translateX(102px) translateY(0px) rotateY(90deg)
+      transform-origin: left top
+
+    .cube:nth-child(4)
+      border: 1px solid $font-color
+      transform: translateX(102px) translateY(0px) translateZ(-102px) rotateY(-180deg)
+      transform-origin: left top
+
+    .cube:nth-child(5)
+      border: 1px solid $font-color
+      transform: translateX(0px) translateY(102px) rotateX(270deg)
+      transform-origin: left top
+
+    .cube:nth-child(6)
+      border: 1px solid $font-color
+      transform: translateX(0px) translateY(-102px) rotateX(90deg)
+      transform-origin: left bottom
+
+  .space02, .space03
+    --center: 25px
+    position: relative
+    +size(50px,50px)
+    left: -11px
+    top: -49px
+    transform-style: preserve-3d
+    transform-origin: center top
+    animation: move 15s linear infinite
+
+    .cube
+      position: absolute
+      width: 50px
+      height: 50px
+
+      &:nth-child(1)
+        border: 1px solid $font-color
+        transform: translateX(-52px) translateY(0px) rotateY(270deg)
+        transform-origin: right top
+
+      &:nth-child(2)
+        border: 1px solid $font-color
+        transform: translateX(0px) translateY(0px)
+
+      &:nth-child(3)
+        border: 1px solid $font-color
+        transform: translateX(52px) translateY(0px) rotateY(90deg)
+        transform-origin: left top
+
+      &:nth-child(4)
+        border: 1px solid $font-color
+        transform: translateX(52px) translateY(0px) translateZ(-52px) rotateY(-180deg)
+        transform-origin: left top
+
+      &:nth-child(5)
+        border: 1px solid $font-color
+        transform: translateX(0px) translateY(52px) rotateX(270deg)
+        transform-origin: left top
+
+      &:nth-child(6)
+        border: 1px solid $font-color
+        transform: translateX(0px) translateY(-52px) rotateX(90deg)
+        transform-origin: left bottom
+
+
+  .space03
+    position: relative
+    +size(50px,50px)
+    left: 61px
+    top: 139px
+    transform-style: preserve-3d
+    transform-origin: center top
+    animation: move 15s linear infinite
+
+
+.bg-design
+  position: fixed
+  right: 0%
+  bottom: 10%
+  // transform: translate(-50%, -50%)
+  z-index: -1
+
+  .number
+    color: #fff
+    width: 100%
+    height: 100%
+    font-size: 100px
+    text-shadow: 0px 0px 1px #bfbfbf
+    font-size: 150px
+    display: none
+    &.show
+      display: block
+
+.scrolltotop
+  position: fixed
+  bottom: 85px
+  right: 32px
+  z-index: 9999999
+
+  &::after
+    content: ""
+    position: absolute
+    bottom: -13px
+    left: 9px
+    background-color: #000
+    +size(1px,10px)
+    transition: 0.5s ease
+  &:hover
+    span
+      background: #fff500
+      &::before
+        top: -46px
+      &::after
+        top: -46px
+
+      box-sizing: border-box
+    &::after
+      transform: rotate(90deg)
+      bottom: -15px
+  span
+    position: relative
+    font-size: 12px
+    font-weight: 600
+    writing-mode: vertical-lr
+    white-space: nowrap
+    color: #000
+    z-index: 99
+    &::before
+      content: ""
+      position: absolute
+      top: -42px
+      left: 7px
+      background-color: #000
+      +size(1px,30px)
+      transition: 0.5s ease
+    &::after
+      content: ""
+      position: absolute
+      top: -42px
+      left: 9px
+      background-color: #000
+      +size(1px,11px)
+      transform: rotate(-24deg)
+      transition: 0.5s ease
+
+
+
