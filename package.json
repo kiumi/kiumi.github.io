@@ -1,0 +1,22 @@
+{
+  "name": "my",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiumi/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiumi/portfolio/issues"
+  },
+  "homepage": "https://github.com/kiumi/portfolio#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

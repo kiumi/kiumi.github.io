@@ -1,5 +1,10 @@
 //樣式顏色定義
-$main-color: #fff300
+$main-color: #ffc3a0
+$main-deep: #ffafbd
+// $main-color: #feada6
+// $main-deep: #f5efef 
+// $main-deep: #fddb92
+
 $second-color: #eaeaea
 $font-color: #000
 $font-color02: #9c9c9c
@@ -102,7 +107,7 @@ header
   width: 100%
   z-index: 2
 
-.index,.about
+.index
   +pagesize
   display: table
 .about, .skill 
@@ -187,7 +192,7 @@ header
       position: absolute
       left: -16px
       top: 0px
-      background-color: $main-color
+      background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
       +size(9px,19px)
 
   .year
@@ -232,25 +237,26 @@ header
 
   .circle-line, .circle-line03, .circle-line04
     +size(900px,900px)
-    border: 1px solid $second-color
+    // border: 1px solid $second-color
     position: absolute
     border-radius: 50%
     left: -65%
     top: -25%
-    z-index: -1
+    // z-index: -1
   .circle-line03
     animation: rotateMove 20s infinite linear
     .circle-small
-      +size(35px,35px)
-      background-color: $main-color
+      +size(28px,28px)
+      background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
       position: absolute
       right: 28%
-      top: 2%
+      top: 8%
       border-radius: 50%
+      z-index: 3
   .circle-line04
     .circle-small02
       +size(10px,10px)
-      background-color:  $main-color
+      background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
       position: absolute
       right: 28%
       top: 3%
@@ -280,7 +286,7 @@ header
   position: relative
   z-index: 1
   .work-region
-    display: none 
+    // display: none 
     animation-delay: 3s
     &.active
       display: block
@@ -300,11 +306,13 @@ header
   &::before
     content: ""
     position: absolute
-    +size(300px,220px)
+    +size(350px,220px)
     border: 3px solid $main-color
     margin-top: 0px
     margin-left: 12px
     transition: 0.5s
+    +breakpoint(pad)
+      +size(303px,220px)
 
 .left-region
   width: 39%
@@ -363,12 +371,13 @@ header
       position: absolute
       bottom: 4px
       right: -29px
-      background: $main-color
+      background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
       +size(22px,9px)
+      
 
 // 清單樣式-無動作
 .region
-  display: none
+  // display: none
   animation-delay: 0.4s
   &.active
     display: block
@@ -427,6 +436,8 @@ header
   #tab
     ul
       float: left
+      +breakpoint(mobile)
+        padding: 0
       a
         color: $font-color
         font-size: 13px
@@ -443,7 +454,7 @@ header
       font-size: $font-size-txt
       position: relative
       +breakpoint(mobile)
-        width: 50%
+        width: 33%
         float: left
       &::after
         content: ""
@@ -457,7 +468,7 @@ header
           left: 34px
           top: 30px
         +breakpoint(mobile-small)
-          width: 82px
+          width: 95px
       &:last-child:after
         +size(0px,0px)
     label
@@ -470,6 +481,7 @@ header
         border-radius: 50%
         border: 1px solid $font-color
         background-color: #fff
+        z-index: 1
         +size(8px,8px)
         +breakpoint(mobile)
           left: 42%
@@ -501,19 +513,25 @@ label
 
 #toggle-tab1:checked ~ .tab-labels label[for="toggle-tab1"],
 #toggle-tab2:checked ~ .tab-labels label[for="toggle-tab2"],
-#toggle-tab3:checked ~ .tab-labels label[for="toggle-tab3"]
+#toggle-tab3:checked ~ .tab-labels label[for="toggle-tab3"],
+#toggle-tab4:checked ~ .tab-labels label[for="toggle-tab4"],
+#toggle-tab5:checked ~ .tab-labels label[for="toggle-tab5"],
   font-weight: 600
   transition: 0.5s
 
 #toggle-tab1:checked ~ .tab-labels label[for="toggle-tab1"]::before,
 #toggle-tab2:checked ~ .tab-labels label[for="toggle-tab2"]::before,
-#toggle-tab3:checked ~ .tab-labels label[for="toggle-tab3"]::before
+#toggle-tab3:checked ~ .tab-labels label[for="toggle-tab3"]::before,
+#toggle-tab4:checked ~ .tab-labels label[for="toggle-tab4"]::before,
+#toggle-tab5:checked ~ .tab-labels label[for="toggle-tab5"]::before
   background-color: $font-color
 
 
 #toggle-tab1:checked ~ .tab-contents #tab1,
 #toggle-tab2:checked ~ .tab-contents #tab2,
-#toggle-tab3:checked ~ .tab-contents #tab3
+#toggle-tab3:checked ~ .tab-contents #tab3,
+#toggle-tab4:checked ~ .tab-contents #tab4,
+#toggle-tab5:checked ~ .tab-contents #tab5
   display: block
 
 .tab-contents
@@ -521,15 +539,18 @@ label
   +breakpoint(mobile)
     width: 100%
   .tab-content
+    width: calc(100% - 75px)
     display: none
     padding: 12px
     float: left
     margin-left: 50px
     +breakpoint(pad)
+      width: calc(100% - 30px)
       margin-left: 10px
     +breakpoint(mobile)
       margin-left: 0px
       padding: 0px
+      width: 100%
 
 .fadeIn
   animation: fadeIn 0.5s
@@ -598,13 +619,14 @@ label
   margin: 0 0 15px 15px
   box-shadow: 2px 2px 18px #ebebeb
   +breakpoint(pc)
-    +size(calc(100%/2 - 15px),170px)
+    +size(calc(100%/2 - 15px),155px)
   +breakpoint(pad)
-    height: 145px
+    height: 111px
   +breakpoint(mobile)
     width: 100%
     margin: 15px 0
-
+    height: 155px
+    
   &.expanded
     .dialog
       display: block
@@ -617,15 +639,25 @@ label
 
   &:hover
     .pic
-      filter: grayscale(0)
+      // filter: grayscale(0)
     button
       transform: scale(50)
-      background-color: #fff300
+      background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
       animation: buttonAnimate .8s forwards
     p
       color: $font-colorGray
 
   .wrapper
+    background-color: $font-color02
+    +size(calc(100% - 44px), 100%)
+    // filter: grayscale(100%)
+    transition: all 2s
+    +breakpoint(pc)
+      // +size(330px,auto)
+    +breakpoint(pad)
+      +size(calc(100% - 35px), 100%)
+    +breakpoint(mobile)
+        width: 90%
     &::before
       content: ""
       position: absolute
@@ -647,15 +679,7 @@ label
       z-index: 3
 
   .pic
-    +size(calc(100% - 50px), 100%)
-    filter: grayscale(100%)
-    transition: all 2s
-    +breakpoint(pc)
-      +size(330px,170px)
-    +breakpoint(pad)
-      width: 230px
-    +breakpoint(mobile)
-        width: 90%
+    
 
     img
       width: 100%
@@ -676,10 +700,11 @@ label
     top: 0
     left: 15px
     height: 100%
-
+    +breakpoint(mobile)
+      border-left: 4px dotted #fff
   button
     +size(22px,22px)
-    background-color: $main-color
+    background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
     position: absolute
     right: 0
     bottom: 0
@@ -690,6 +715,8 @@ label
     animation: none
     +breakpoint(pad)
       +size(18px,18px)
+    +breakpoint(mobile)
+      +size(15px,15px)
   p
     position: absolute
     right: 3px
@@ -787,13 +814,23 @@ label
         align-items: flex-start
         padding: 0 25px
         box-sizing: border-box
-        width: 800px
+        width: 1200px
         margin: 0 auto
         +breakpoint(mobile)
           width: 100%
           padding: 0px
         img
           width: 100%
+        &.flex-block
+          display: flex
+          flex-wrap: wrap
+          justify-content: space-evenly
+          width: 90%
+          img 
+            width: 32%
+            margin-bottom: 12px
+            +breakpoint(mobile)
+              +size(100%,auto)
 
 
 .block-style
@@ -816,7 +853,7 @@ label
       bottom: 0
       left: 49px
       +size(150px,8px)
-      background-color: $main-color
+      background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
       z-index: -1
   span
     font-size: $font-size-small
@@ -833,11 +870,11 @@ label
     width: 150px
     +breakpoint(mobile)
       width: 100%
-      morgin-bottom: 20px
+      margin-bottom: 20px
   .wrapper
     +size(60px,60px)
     border-radius: 50%
-    background: $main-color
+    background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
     margin: 0 auto
     text-align: center
     line-height: 72px
@@ -1017,7 +1054,7 @@ label
     transition: 0.5s ease
   &:hover
     span
-      background: #fff500
+      background-image: linear-gradient(to top, $main-color 0%, $main-deep 100%)
       &::before
         top: -46px
       &::after
