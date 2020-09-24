@@ -964,7 +964,7 @@ label {
 
 .card {
   width: calc(100%/2 - 15px);
-  height: 250px;
+  height: 242px;
   background-color: #fff;
   position: relative;
   overflow: hidden;
@@ -1267,7 +1267,7 @@ label {
   padding: 0 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 1200px;
+  width: 900px;
   margin: 0 auto;
 }
 
@@ -1294,16 +1294,20 @@ label {
   width: 90%;
 }
 
-.card .dialog .card-content .img-cover.flex-block img {
+.card .dialog .card-content .img-cover.flex-block .item-cover {
   width: 32%;
   margin-bottom: 12px;
 }
 
 @media only screen and (max-width: 480px) {
-  .card .dialog .card-content .img-cover.flex-block img {
+  .card .dialog .card-content .img-cover.flex-block .item-cover {
     width: 100%;
     height: auto;
   }
+}
+
+.card .dialog .card-content .img-cover.flex-block .item-cover img {
+  width: 100%;
 }
 
 .block-style {

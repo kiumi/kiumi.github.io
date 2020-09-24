@@ -610,7 +610,7 @@ label
 
 //card style
 .card
-  +size(calc(100%/2 - 15px),250px)
+  +size(calc(100%/2 - 15px),242px)
   background-color: #fff
   position: relative
   overflow: hidden
@@ -814,7 +814,7 @@ label
         align-items: flex-start
         padding: 0 25px
         box-sizing: border-box
-        width: 1200px
+        width: 900px
         margin: 0 auto
         +breakpoint(mobile)
           width: 100%
@@ -826,11 +826,13 @@ label
           flex-wrap: wrap
           justify-content: space-evenly
           width: 90%
-          img 
+          .item-cover 
             width: 32%
             margin-bottom: 12px
             +breakpoint(mobile)
               +size(100%,auto)
+            img
+              width: 100%
 
 
 .block-style
